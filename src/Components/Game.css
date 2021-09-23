@@ -1,0 +1,47 @@
+.game button {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: papyrus;
+  background-color: rgb(85, 107, 47);
+  border: solid 2px black;
+  color: black;
+  width: auto;
+  height: auto;
+  cursor: pointer;
+  font-weight: bold;
+}
+.game .snake {
+  background-color: black;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 0;
+  top: 50px;
+  border-radius: 5px;
+}
+.game-screen {
+  position: absolute;
+  border: 5 black;
+  width: 1000px;
+  height: 750px;
+  top: 50px;
+  background-color: rgb(85, 107, 47);
+  cursor: none;
+}
+.score {
+  color: black;
+  font-weight: bold;
+  font-size: 150%;
+  position: absolute;
+  left: 75%;
+}
+.apple {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  left: 150px;
+  top: 150px;
+  border-radius: 50%;
+}

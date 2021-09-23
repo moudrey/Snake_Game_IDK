@@ -1,0 +1,57 @@
+.menu {
+  background-color: rgb(85, 107, 47);
+  position: absolute;
+  width: 1000px;
+  height: 800px;
+}
+.menu h1 {
+  font-size: 5em;
+  font-family: papyrus;
+  color: black;
+}
+.menu button {
+  font-size: 5em;
+  font-family: papyrus;
+  background-color: rgb(85, 107, 47);
+  border: solid 10px black;
+  color: black;
+  width: 200px;
+  height: 150px;
+  cursor: pointer;
+  border-radius: 15px;
+}
+.menu button:hover {
+  border-width: 8px;
+  font-weight: bold;
+  width: auto - 4px;
+  height: auto - 4px;
+}
+.menu .snake {
+  width: 50px;
+  background-color: black;
+  text-align: right;
+  height: 25px;
+  border-radius: 5px;
+  position: relative;
+  top: 200px;
+
+  animation: snakeMenuMovement 10s infinite;
+}
+
+@keyframes snakeMenuMovement {
+  0% {
+    left: 0;
+    transform: rotate(0);
+  }
+  50% {
+    left: 95%;
+    transform: rotate(0);
+  }
+  50.0001% {
+    transform: rotate(180deg);
+  }
+  100% {
+    left: 0;
+    transform: rotate(180deg);
+  }
+}

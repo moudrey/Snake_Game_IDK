@@ -1,24 +1,28 @@
-import logo from './logo.svg';
+import styled from 'styled-components';
 import './App.css';
+import Game from './Components/Game';
+import { useState } from 'react';
+import Menu from './Components/Menu';
+
+const Wrapper = styled.div`
+  background-color: white;
+  color: RGB(200, 200, 200);
+  width: 1000px;
+  height: 800px;
+  position: absolute;
+  left: 25%;
+  top: 5%;
+  text-align: center;
+  border: solid 5px white;
+`;
 
 function App() {
+  const [play, setPlay] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Wrapper>
+      {play ? <Game onPlayClick={setPlay} /> : <Menu onPlayClick={setPlay} />}
+    </Wrapper>
   );
 }
 
