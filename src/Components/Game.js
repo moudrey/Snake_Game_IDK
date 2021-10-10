@@ -1,5 +1,5 @@
 import './Game.css';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 let xAxis = 150;
 let yAxis = 150;
@@ -13,8 +13,8 @@ const Game = (actions) => {
   const [left, setLeft] = useState(0);
   const [top, setTop] = useState(50);
   const [score, setScore] = useState(0);
+  const [bannedDirection, setBannedDirection] = useState('left');
 
-  console.log('left=', left, 'top=', top, 'xAxis=', xAxis, 'yAxis=', yAxis);
   useEffect(() => {
     if (
       left >= xAxisMin &&
@@ -38,64 +38,86 @@ const Game = (actions) => {
 
     //Move to right
     if (direction === 'right') {
-      const movementRight = setInterval(() => {
-        document.getElementById('Gamesnake').style.left = left + 'px';
-        setLeft(left + 1);
-        if (left === 980) {
-          setLeft(0);
-          alert('your lose');
-          actions.onPlayClick(false);
-        }
-      }, 5);
-      return () => {
-        clearInterval(movementRight);
-      };
+      if (bannedDirection !== 'right') {
+        const movementRight = setInterval(() => {
+          document.getElementById('Gamesnake').style.left = left + 'px';
+          setLeft(left + 1);
+          if (left === 980) {
+            setLeft(0);
+            alert('your lose');
+            actions.onPlayClick(false);
+          }
+        }, 5);
+        setBannedDirection('left');
+
+        return () => {
+          clearInterval(movementRight);
+        };
+      } else {
+        setDirection('left');
+      }
     }
+
     //Move to down
 
     if (direction === 'down') {
-      const movementTop = setInterval(() => {
-        document.getElementById('Gamesnake').style.top = top + 'px';
-        setTop(top + 1);
-        if (top === 730) {
-          setTop(0);
-          alert('your lose');
-          actions.onPlayClick(false);
-        }
-      }, 5);
-      return () => {
-        clearInterval(movementTop);
-      };
+      if (bannedDirection !== 'down') {
+        const movementTop = setInterval(() => {
+          document.getElementById('Gamesnake').style.top = top + 'px';
+          setTop(top + 1);
+          if (top === 730) {
+            setTop(0);
+            alert('your lose');
+            actions.onPlayClick(false);
+          }
+        }, 5);
+        setBannedDirection('up');
+        return () => {
+          clearInterval(movementTop);
+        };
+      } else {
+        setDirection('up');
+      }
     }
     //Move to up
     if (direction === 'up') {
-      const movementTop = setInterval(() => {
-        document.getElementById('Gamesnake').style.top = top + 'px';
-        setTop(top - 1);
-        if (top === 0) {
-          setTop(0);
-          alert('your lose');
-          actions.onPlayClick(false);
-        }
-      }, 5);
-      return () => {
-        clearInterval(movementTop);
-      };
+      if (bannedDirection !== 'up') {
+        const movementTop = setInterval(() => {
+          document.getElementById('Gamesnake').style.top = top + 'px';
+          setTop(top - 1);
+          if (top === 0) {
+            setTop(0);
+            alert('your lose');
+            actions.onPlayClick(false);
+          }
+        }, 5);
+        setBannedDirection('down');
+        return () => {
+          clearInterval(movementTop);
+        };
+      } else {
+        setDirection('down');
+      }
     }
     //Move to left
     if (direction === 'left') {
-      const movementTop = setInterval(() => {
-        document.getElementById('Gamesnake').style.left = left + 'px';
-        setLeft(left - 1);
-        if (left === 0) {
-          setLeft(0);
-          alert('your lose');
-          actions.onPlayClick(false);
-        }
-      }, 5);
-      return () => {
-        clearInterval(movementTop);
-      };
+      if (bannedDirection !== 'left') {
+        const movementTop = setInterval(() => {
+          document.getElementById('Gamesnake').style.left = left + 'px';
+          setLeft(left - 1);
+          if (left === 0) {
+            setLeft(0);
+            alert('your lose');
+            actions.onPlayClick(false);
+          }
+        }, 5);
+        setBannedDirection('right');
+        return () => {
+          clearInterval(movementTop);
+        };
+      } else {
+        setDirection('right');
+      }
     }
   });
 

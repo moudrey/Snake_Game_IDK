@@ -3,13 +3,14 @@
   left: 0;
   top: 0;
   font-family: papyrus;
+  font-weight: bold;
+  font-size: 150%;
   background-color: rgb(85, 107, 47);
   border: solid 2px black;
   color: black;
   width: auto;
   height: auto;
   cursor: pointer;
-  font-weight: bold;
 }
 .game .snake {
   background-color: black;
